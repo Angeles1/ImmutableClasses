@@ -16,7 +16,10 @@ public class Main {
     }
     private final Map<String, Person> persons = new HashMap<>();
     private final List<PersonWeight> personWeight = new ArrayList<>();
+    private final List<Wedding> wedding= new ArrayList<>();
+    private final List<Divorce> divorce = new ArrayList<>();
 
+    
     public Main() {
         persons.put("Gabriel", new Person("Gabriel", LocalDate.of(1961, Month.APRIL, 3)));
         persons.put("Angeles", new Person("Angeles", LocalDate.of(1991, Month.MARCH, 2)));
@@ -24,6 +27,11 @@ public class Main {
 
         personWeight.add(new PersonWeight(LocalDate.of(2016, Month.OCTOBER, 1), persons.get("Gabriel"), 68.9));
         personWeight.add(new PersonWeight(LocalDate.of(2016, Month.MARCH, 5), persons.get("Angeles"), 57.6));
+        
+        wedding.add(new Wedding(LocalDate.of(2015, Month.MARCH, 5), persons.get("Angeles")));
+        
+        divorce.add(new Divorce(LocalDate.of(2016, Month.APRIL, 22), persons.get("Gabriel")));
+        
 
     }
 
@@ -37,6 +45,14 @@ public class Main {
             for (PersonWeight personWeight : personWeight) {
                 if (personWeight.getPerson() != person) {
                     continue;
+                }
+                for (Wedding wedding : wedding) {
+                    System.out.println("se Caso "+ wedding.getDate());
+                    
+                }
+                for (Divorce div : divorce) {
+                    System.out.println("Se divorcio "+ div.getDate()+ " de "+ div.getPerson().getName());
+                    
                 }
                 System.out.println(" En la fecha " + personWeight.getDate() + "  pesa " + personWeight.getWeight() + " kilos.");
             }
